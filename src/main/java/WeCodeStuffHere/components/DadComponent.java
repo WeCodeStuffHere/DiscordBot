@@ -1,18 +1,20 @@
 package WeCodeStuffHere.components;
 
-import WeCodeStuffHere.modules.annotations.JDABotBuilder;
-import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
-import javax.inject.Inject;
+public class DadComponent extends Component {
 
-public class DadComponent implements Component {
-
-    @Inject
-    public DadComponent(@JDABotBuilder JDABuilder jdaBuilder) {
-
+    @Override
+    public void onReady(ReadyEvent event)
+    {
+        if (event != null)
+            System.out.println("Hi depressed, I'm dad!");
     }
 
-    public void run() {
-        System.out.println("Hi depressed, I am dad");
+    @Override
+    public void onMessageReceived(MessageReceivedEvent event)
+    {
+        System.out.printf("[%s]: %s\n", event.getAuthor().getName(), event.getMessage().getContentDisplay());
     }
 }

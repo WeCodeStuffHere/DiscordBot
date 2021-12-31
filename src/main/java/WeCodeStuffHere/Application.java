@@ -39,7 +39,7 @@ public class Application {
 
         // Initialize and start all components.
         for (Class<? extends Component> component : components) {
-            new Thread(componentFactory.create(component)).start();
+            jda.addEventListener(componentFactory.create(component));
         }
     }
 }
