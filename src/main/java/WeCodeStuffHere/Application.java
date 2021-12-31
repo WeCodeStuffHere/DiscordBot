@@ -2,7 +2,7 @@ package WeCodeStuffHere;
 
 import WeCodeStuffHere.components.Component;
 import WeCodeStuffHere.components.ComponentFactory;
-import WeCodeStuffHere.components.DadComponent;
+import WeCodeStuffHere.components.DaddyComponent;
 import WeCodeStuffHere.modules.annotations.JDABotBuilder;
 import WeCodeStuffHere.modules.annotations.Token;
 import net.dv8tion.jda.api.JDA;
@@ -19,7 +19,7 @@ public class Application {
     private final ComponentFactory componentFactory;
     private final List<Class<? extends Component>> components = new ArrayList<>() {
         {
-            add(DadComponent.class);
+            add(DaddyComponent.class);
         }
     };
 
