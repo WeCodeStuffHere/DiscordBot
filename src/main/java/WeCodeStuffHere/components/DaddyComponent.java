@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DadComponent extends Component {
+public class DaddyComponent extends Component {
     private final List<String> triggers = new ArrayList<>() {
         {
             add("i am");
