@@ -6,7 +6,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 public class DaddyComponent extends Component {
     private final List<String> triggers = new ArrayList<>() {
@@ -30,17 +30,17 @@ public class DaddyComponent extends Component {
         if (event.getAuthor().isBot()) {
             return;
         }
-
         String message = event.getMessage().getContentDisplay().toLowerCase();
-        List<String> triggersInMessage = triggers.stream()
-                .filter(message::contains)
-                .collect(Collectors.toList());
+        Optional<String> potentialTrigger = triggers.stream().filter(message::contains).findFirst();
 
-        if (triggersInMessage.size() > 0) {
-            String trigger = triggersInMessage.get(0);
-            String dadJoke = message.substring(message.lastIndexOf(trigger) + trigger.length() + 1);
-            MessageChannel channel = event.getChannel();
-            channel.sendMessage("Hi " + dadJoke + ", I'm Dad!").queue();
+        if (potentialTrigger.isPresent()) {
+            String trigger = potentialTrigger.get();
+
+            if (message.length() != trigger.length()) {
+                String dadJoke = message.substring(message.lastIndexOf(trigger) + trigger.length() + 1);
+                MessageChannel channel = event.getChannel();
+                channel.sendMessage("Hi " + dadJoke + ", I'm Dad!").queue();
+            }
         }
     }
 }
