@@ -12,8 +12,10 @@ public class DaddyComponent extends Component {
     private final List<String> triggers = new ArrayList<>() {
         {
             add("i am");
+            add("im");
             add("i'm");
             add("my name is");
+            add("i call myself");
         }
     };
 
