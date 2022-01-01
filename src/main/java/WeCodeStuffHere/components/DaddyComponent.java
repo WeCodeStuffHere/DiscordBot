@@ -37,7 +37,7 @@ public class DaddyComponent extends Component {
             String trigger = potentialTrigger.get();
 
             if (message.length() != trigger.length()) {
-                String dadJoke = message.substring(message.lastIndexOf(trigger) + trigger.length() + 1);
+                String dadJoke = message.substring(message.indexOf(trigger) + trigger.length() + 1);
                 MessageChannel channel = event.getChannel();
                 channel.sendMessage("Hi " + dadJoke + ", I'm Dad!").queue();
             }
