@@ -3,6 +3,7 @@ package WeCodeStuffHere;
 import WeCodeStuffHere.components.Component;
 import WeCodeStuffHere.components.ComponentFactory;
 import WeCodeStuffHere.components.DaddyComponent;
+import WeCodeStuffHere.components.FormattingTutorialComponent;
 import WeCodeStuffHere.modules.annotations.JDABotBuilder;
 import WeCodeStuffHere.modules.annotations.Token;
 import net.dv8tion.jda.api.JDA;
@@ -20,6 +21,7 @@ public class Application {
     private final List<Class<? extends Component>> components = new ArrayList<>() {
         {
             add(DaddyComponent.class);
+            add(FormattingTutorialComponent.class);
         }
     };
 
