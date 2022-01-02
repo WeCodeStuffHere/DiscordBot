@@ -25,4 +25,30 @@ public class PlayerRepository {
 
         return null;
     }
+
+    public void createPlayer(String name, float experience) {
+        this.createPlayer(new Player(name, experience));
+    }
+
+    public void createPlayer(Player player) {
+        try {
+            playerDAO.createOrUpdate(player);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized Player getPlayer(String name) {
+        Player player = null;
+        try {
+            List<Player> players = playerDAO.queryBuilder()
+                    .where().eq("name", name).query();
+
+            player = players.get(0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return player;
+    }
 }
