@@ -1,6 +1,7 @@
 package WeCodeStuffHere.components;
 
-
+import WeCodeStuffHere.database.repositories.PlayerRepository;
+import com.google.inject.Inject;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.ReadyEvent;
@@ -10,8 +11,12 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.awt.*;
 
 public class FormattingTutorialComponent extends Component {
+    private final PlayerRepository playerRepository;
 
-
+    @Inject
+    public FormattingTutorialComponent(PlayerRepository playerRepository) {
+        this.playerRepository = playerRepository;
+    }
 
     @Override
     public void onReady(ReadyEvent event) {
