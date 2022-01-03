@@ -11,12 +11,16 @@ public class Player {
     @DatabaseField(canBeNull = false, columnName = "experience")
     private float experience;
 
+    @DatabaseField(canBeNull = false, columnName = "level")
+    private int level;
+
     // ORMLite requires a no-arg constructor.
     public Player() {}
 
-    public Player(String name, float experience) {
+    public Player(String name, float experience, int level) {
         this.name = name;
         this.experience = experience;
+        this.level = level;
     }
 
     public String getName() {
