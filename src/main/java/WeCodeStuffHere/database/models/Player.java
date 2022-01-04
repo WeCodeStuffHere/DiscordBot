@@ -33,4 +33,7 @@ public class Player {
     public int getLevel() {
         return level;
     }
+    public void setExperience(float experience) {
+        this.experience = experience;
+    }
 }

@@ -5,6 +5,7 @@ import WeCodeStuffHere.modules.annotations.PlayerDAO;
 import com.google.inject.Inject;
 import com.j256.ormlite.dao.Dao;
 
+import javax.management.Query;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -38,6 +39,32 @@ public class PlayerRepository {
         }
     }
 
+    public boolean ifExists(String name) {
+        try {
+            return playerDAO.idExists(name);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }}
+    public float getExperience(String name) {
+        try {
+            return playerDAO.queryForId(name).getExperience();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
+    public void  setExperience(String name, float experience) {
+        try {
+            List<Player> player = playerDAO.queryBuilder().where().eq("name", name).query();
+            player.get(0).setExperience(experience);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }}
     public synchronized Player getPlayer(String name) {
         Player player = null;
         try {

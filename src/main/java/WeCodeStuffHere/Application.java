@@ -1,9 +1,6 @@
 package WeCodeStuffHere;
 
-import WeCodeStuffHere.components.Component;
-import WeCodeStuffHere.components.ComponentFactory;
-import WeCodeStuffHere.components.DaddyComponent;
-import WeCodeStuffHere.components.FormattingTutorialComponent;
+import WeCodeStuffHere.components.*;
 import WeCodeStuffHere.database.models.Player;
 import WeCodeStuffHere.database.repositories.PlayerRepository;
 import WeCodeStuffHere.modules.annotations.JDABotBuilder;
@@ -18,12 +15,13 @@ import java.util.List;
 
 public class Application {
     private final JDABuilder jdaBuilder;
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
     private final ComponentFactory componentFactory;
     private final List<Class<? extends Component>> components = new ArrayList<>() {
         {
             add(DaddyComponent.class);
             add(FormattingTutorialComponent.class);
+            add(LevelingComponent.class);
         }
     };
 
