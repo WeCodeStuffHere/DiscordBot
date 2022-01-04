@@ -19,6 +19,7 @@ public class DaddyComponent extends Component {
             add("i'm");
             add("my name is");
             add("i call myself");
+            add("refer to me as");
         }
     };
 

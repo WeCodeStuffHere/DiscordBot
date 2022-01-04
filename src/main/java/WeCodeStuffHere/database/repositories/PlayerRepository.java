@@ -26,8 +26,8 @@ public class PlayerRepository {
         return null;
     }
 
-    public void createPlayer(String name, float experience) {
-        this.createPlayer(new Player(name, experience));
+    public void createPlayer(String name, float experience, int level) {
+        this.createPlayer(new Player(name, experience, level));
     }
 
     public void createPlayer(Player player) {

@@ -30,4 +30,7 @@ public class Player {
     public float getExperience() {
         return experience;
     }
+    public int getLevel() {
+        return level;
+    }
 }
