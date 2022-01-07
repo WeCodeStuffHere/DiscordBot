@@ -6,13 +6,13 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "player")
 public class Player {
     @DatabaseField(canBeNull = false, id = true, columnName = "name")
-    private String name;
+    public String name;
 
     @DatabaseField(canBeNull = false, columnName = "experience")
     private float experience;
 
     @DatabaseField(canBeNull = false, columnName = "level")
-    private int level;
+    public int level;
 
     // ORMLite requires a no-arg constructor.
     public Player() {}
@@ -35,5 +35,10 @@ public class Player {
     }
     public void setExperience(float experience) {
         this.experience = experience;
+
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

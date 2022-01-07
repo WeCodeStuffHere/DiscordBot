@@ -17,6 +17,7 @@ public class LevelingComponent extends Component  {
 
     @Override
     public void onReady(ReadyEvent event) {
+        System.out.println("Leveling Component is ready");
     }
 
     @Override
@@ -24,10 +25,17 @@ public class LevelingComponent extends Component  {
         if (playerRepository.ifExists(event.getAuthor().getId()))  {
             System.out.println(":)");
            playerRepository.setExperience (event.getAuthor().getId(), playerRepository.getExperience(event.getAuthor().getId()) + 25);
-
+           playerRepository.setLevel(event.getAuthor().getId(),  getExperienceForLevel((int) playerRepository.getLevel(event.getAuthor().getId())));
         }
         else {
             playerRepository.createPlayer(event.getAuthor().getId(), 0, 0);
         }
     }
+
+
+    public static int getExperienceForLevel(int level) {
+        int SCALE = 500;
+        return (int) Math.sqrt(SCALE * level);
+    }
 }
+
