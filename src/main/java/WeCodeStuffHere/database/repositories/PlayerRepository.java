@@ -69,7 +69,7 @@ public class PlayerRepository {
 
         }}
 
-    public void  setLevel(String name, int level) {
+    public void setLevel(int level, String name) {
         try {
             List<Player> player = playerDAO.queryBuilder().where().eq("name", name).query();
             player.get(0).setLevel(level);
@@ -94,7 +94,7 @@ public class PlayerRepository {
 
         return player;
     }
-    public float getLevel(String name) {
+    public int getLevel(String name) {
         try {
             return playerDAO.queryForId(name).getLevel();
         } catch (SQLException e) {

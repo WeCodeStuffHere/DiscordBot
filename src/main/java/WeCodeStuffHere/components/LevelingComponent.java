@@ -7,6 +7,8 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import javax.inject.Inject;
 
+import static WeCodeStuffHere.modules.fixingJavaSyntax.*;
+
 
 public class LevelingComponent extends Component  {
     private final PlayerRepository playerRepository;
@@ -19,22 +21,25 @@ public class LevelingComponent extends Component  {
     public void onReady(ReadyEvent event) {
         System.out.println("Leveling Component is ready");
     }
-
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
         if (playerRepository.ifExists(event.getAuthor().getId()))  {
             System.out.println(":)");
-           playerRepository.setExperience (event.getAuthor().getId(), playerRepository.getExperience(event.getAuthor().getId()) + 25);
-           playerRepository.setLevel(event.getAuthor().getId(),  getExperienceForLevel((int) playerRepository.getLevel(event.getAuthor().getId())));
+           playerRepository.setExperience (event.getAuthor().getId(), playerRepository.getExperience(event.getAuthor().getId()) + 1);
+            if(getExperienceForLevel(Math.round(playerRepository.getLevel(event.getAuthor().getId()))) <= playerRepository.getExperience(event.getAuthor().getId())) {
+                playerRepository.setLevel(playerRepository.getLevel(event.getAuthor().getId()) + 1, event.getAuthor().getId());
+            }
         }
         else {
             playerRepository.createPlayer(event.getAuthor().getId(), 0, 0);
+            print("Creating a new player :D");
         }
     }
 
 
     public static int getExperienceForLevel(int level) {
         int SCALE = 500;
+        print(String.valueOf(Math.sqrt(SCALE * level)));
         return (int) Math.sqrt(SCALE * level);
     }
 }

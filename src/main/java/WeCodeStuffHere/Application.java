@@ -37,7 +37,7 @@ public class Application {
     }
 
     public void run() throws LoginException {
-        createMockData();
+
         JDA jda = jdaBuilder.build();
 
         // Initialize and start all components.
@@ -46,20 +46,5 @@ public class Application {
         }
     }
 
-    public void createMockData() {
-        playerRepository.createPlayer("Player1", 0, 0);
-        playerRepository.createPlayer("Player2", 1, 1);
-        playerRepository.createPlayer("Player3", 2, 2);
-        playerRepository.createPlayer("Player4", 3,3);
-        playerRepository.createPlayer("Player5", 4,4);
 
-        List<Player> players = playerRepository.getAllPlayers();
-        for (Player player : players) {
-            System.out.print(player.getName() + " ");
-            System.out.print(player.getExperience() + " \n");
-        }
-
-        Player player = playerRepository.getPlayer("Player4");
-        System.out.println(player.getName() + " has " + player.getExperience() + " experience");
-    }
 }
