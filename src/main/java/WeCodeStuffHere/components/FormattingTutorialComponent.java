@@ -11,11 +11,10 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import java.awt.*;
 
 public class FormattingTutorialComponent extends Component {
-    private final PlayerRepository playerRepository;
+
 
     @Inject
     public FormattingTutorialComponent(PlayerRepository playerRepository) {
-        this.playerRepository = playerRepository;
     }
 
     @Override
@@ -34,7 +33,7 @@ public class FormattingTutorialComponent extends Component {
            EmbedBuilder eb = new EmbedBuilder();
             eb.setTitle("Discord Formatting Options.", null);
             eb.setColor(Color.pink);
-            eb.addField("Code Blocks", "To add a codeblock you need 3 \"´\" symbols on the starting of your code and the ending of your code. \n Example: ```print(\"Hello World!\")``",  true);
+            eb.addField("Code Blocks", "To add a code block you need 3 \"´\" symbols on the starting of your code and the ending of your code. \n Example: ```print(\"Hello World!\")``",  true);
             eb.setFooter("If u see any typos or missing stuff in this command please make a issue on the github ty <3            code not ready dont make a issue this  is for future");
             channel.sendMessageEmbeds(eb.build()).queue();
         }

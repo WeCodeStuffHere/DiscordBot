@@ -1,9 +1,6 @@
 package WeCodeStuffHere;
 
-import WeCodeStuffHere.components.Component;
-import WeCodeStuffHere.components.ComponentFactory;
-import WeCodeStuffHere.components.DaddyComponent;
-import WeCodeStuffHere.components.FormattingTutorialComponent;
+import WeCodeStuffHere.components.*;
 import WeCodeStuffHere.database.models.Player;
 import WeCodeStuffHere.database.repositories.PlayerRepository;
 import WeCodeStuffHere.modules.annotations.JDABotBuilder;
@@ -18,12 +15,13 @@ import java.util.List;
 
 public class Application {
     private final JDABuilder jdaBuilder;
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
     private final ComponentFactory componentFactory;
     private final List<Class<? extends Component>> components = new ArrayList<>() {
         {
             add(DaddyComponent.class);
             add(FormattingTutorialComponent.class);
+            add(LevelingComponent.class);
         }
     };
 
@@ -39,7 +37,7 @@ public class Application {
     }
 
     public void run() throws LoginException {
-        createMockData();
+
         JDA jda = jdaBuilder.build();
 
         // Initialize and start all components.
@@ -48,20 +46,5 @@ public class Application {
         }
     }
 
-    public void createMockData() {
-        playerRepository.createPlayer("Player1", 0, 0);
-        playerRepository.createPlayer("Player2", 1, 1);
-        playerRepository.createPlayer("Player3", 2, 2);
-        playerRepository.createPlayer("Player4", 3,3);
-        playerRepository.createPlayer("Player5", 4,4);
 
-        List<Player> players = playerRepository.getAllPlayers();
-        for (Player player : players) {
-            System.out.print(player.getName() + " ");
-            System.out.print(player.getExperience() + " \n");
-        }
-
-        Player player = playerRepository.getPlayer("Player4");
-        System.out.println(player.getName() + " has " + player.getExperience() + " experience");
-    }
 }

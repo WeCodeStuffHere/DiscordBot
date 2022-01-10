@@ -30,13 +30,56 @@ public class PlayerRepository {
         this.createPlayer(new Player(name, experience, level));
     }
 
-    public void createPlayer(Player player) {
+    public Player createPlayer(Player player) {
         try {
             playerDAO.createOrUpdate(player);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return player;
     }
+
+    public boolean ifExists(String name) {
+        try {
+            return playerDAO.idExists(name);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }}
+
+
+    public float getExperience(String name) {
+        try {
+            return  playerDAO.queryForId(name).getExperience();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
+    public void  setExperience(String name, float experience) {
+        try {
+            List<Player> player = playerDAO.queryBuilder().where().eq("name", name).query();
+            player.get(0).setExperience(experience);
+            playerDAO.createOrUpdate(createPlayer(new Player(player.get(0).name, experience, player.get(0).level)));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }}
+
+    public void setLevel(int level, String name) {
+        try {
+            List<Player> player = playerDAO.queryBuilder().where().eq("name", name).query();
+            player.get(0).setLevel(level);
+            playerDAO.createOrUpdate(createPlayer(new Player(player.get(0).name, level, player.get(0).level)));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }}
+
 
     public synchronized Player getPlayer(String name) {
         Player player = null;
@@ -51,4 +94,16 @@ public class PlayerRepository {
 
         return player;
     }
+    public int getLevel(String name) {
+        try {
+            return playerDAO.queryForId(name).getLevel();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
 }
+
+

@@ -24,7 +24,11 @@ public class ComponentFactory {
                     playerRepositoryProvider.get()
             );
         }
-
+        if (component == LevelingComponent.class) {
+            return new LevelingComponent(
+                    playerRepositoryProvider.get()
+            );
+        }
         throw new UnsupportedOperationException("Factory has not defined how the given class has to be created");
     }
 }

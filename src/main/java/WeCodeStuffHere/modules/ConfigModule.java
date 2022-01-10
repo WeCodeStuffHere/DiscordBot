@@ -40,7 +40,7 @@ public class ConfigModule extends AbstractModule {
         // Disable compression (not recommended)
         builder.setCompression(Compression.NONE);
         // Set activity (like "playing Something")
-        builder.setActivity(Activity.watching("TV"));
+        builder.setActivity(Activity.playing("Your mom"));
 
         return builder;
     }
