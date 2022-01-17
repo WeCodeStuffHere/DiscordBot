@@ -39,22 +39,9 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>org.xerial</groupId>
-            <artifactId>sqlite-jdbc</artifactId>
-            <version>3.36.0.2</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.j256.ormlite</groupId>
-            <artifactId>ormlite-core</artifactId>
-            <version>6.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.j256.ormlite</groupId>
-            <artifactId>ormlite-jdbc</artifactId>
-            <version>6.1</version>
-            <scope>compile</scope>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.12.10</version>
         </dependency>
     </dependencies>
 </project>
