@@ -5,7 +5,8 @@ import WeCodeStuffHere.modules.annotations.Token;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
-import io.github.cdimascio.dotenv.Dotenv;
+// import io.github.cdimascio.dotenv.Dotenv;
+import java.lang.System;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -15,9 +16,10 @@ import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 public class ConfigModule extends AbstractModule {
-    Dotenv dotenv = Dotenv.load();
 
-    private final String token = dotenv.get("TOKEN");
+    private final String token = System.getenv("TOKEN");
+    // Dotenv dotenv = Dotenv.load();
+    // private final String token = dotenv.get("TOKEN");
 
     protected void configure() {
         bind(String.class).annotatedWith(Token.class).toInstance(this.token);
