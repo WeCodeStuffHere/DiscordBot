@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: gayqueens
+      MYSQL_DATABASE: wecodestuffhere
+    volumes:
+      - ./:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+  bot:
+      build:
+        context: .
+        dockerfile: Dockerfile
+      restart: unless-stopped
+      container_name: bot
+
+

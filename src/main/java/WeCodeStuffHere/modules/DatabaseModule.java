@@ -21,8 +21,8 @@ public class DatabaseModule extends AbstractModule {
         super();
 
         try {
-            String databaseUrl = "jdbc:sqlite:database.db";
-            connectionSource = new JdbcConnectionSource(databaseUrl);
+            String databaseUrl = "jdbc:mysql://localhost:3306/wecodestuffhere";
+            connectionSource = new JdbcConnectionSource(databaseUrl,"root","gayqueens");
 
             TableUtils.createTableIfNotExists(connectionSource, Player.class);
         } catch (SQLException e) {
