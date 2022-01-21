@@ -7,6 +7,5 @@ ENV JAVA_OPTS=""
 # ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /DiscordBot.jar"]
 ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /DiscordBot-jar-with-dependencies.jar"]
 # CMD ["java", "-jar", "target/DiscordBot.jar"]
-CMD ["./mvn", "clean package"]
 CMD ["java", "-jar", "target/DiscordBot-jar-with-dependencies.jar"]
 
