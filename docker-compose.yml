@@ -9,10 +9,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: gayqueens
       MYSQL_DATABASE: wecodestuffhere
+      MYSQL_USER: wecodestuffhere
+      MYSQL_PASSWORD: gayqueens
     volumes:
-      - ./:/var/lib/mysql
+      - ./db:/var/lib/mysql
     ports:
       - "3306:3306"
+
 
   adminer:
     image: adminer
@@ -27,4 +30,10 @@ services:
       container_name: bot
       env_file:
         - .env
+      depends_on:
+        - db
 
+
+networks:
+  default:
+    driver: bridge

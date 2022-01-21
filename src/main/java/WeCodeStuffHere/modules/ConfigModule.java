@@ -16,8 +16,7 @@ import net.dv8tion.jda.api.utils.MemberCachePolicy;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
 
 public class ConfigModule extends AbstractModule {
-
-    private final String token = System.getenv("TOKEN");
+    final String token = System.getenv("TOKEN");
     //* Dotenv dotenv = Dotenv.load();
     // private final String token = dotenv.get("TOKEN");
 
