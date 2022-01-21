@@ -22,7 +22,7 @@ public class DatabaseModule extends AbstractModule {
 
         try {
             String databaseUrl = "jdbc:mysql://db:3306/wecodestuffhere";
-            connectionSource = new JdbcConnectionSource(databaseUrl,"wecodestuffhere","gayqueens");
+            connectionSource = new JdbcConnectionSource(databaseUrl,"root","gayqueens");
 
             TableUtils.createTableIfNotExists(connectionSource, Player.class);
         } catch (SQLException e) {
