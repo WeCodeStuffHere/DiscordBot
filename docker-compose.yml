@@ -24,7 +24,7 @@ services:
       - "8080:8080"
   bot:
       build:
-        context: ./javabot
+        context: .
         dockerfile: Dockerfile
       restart: unless-stopped
       container_name: bot
